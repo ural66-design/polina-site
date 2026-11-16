@@ -199,8 +199,6 @@ h2 {
 .social-link:focus-visible { outline: 2px solid #edf4fb; outline-offset: 3px; }
 .social-link__icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex: 0 0 28px; }
 .social-link__icon svg { display: block; width: 100%; height: 100%; }
-.social-link__arrow { width: 17px; height: 17px; position: absolute; right: 18px; color: rgba(248, 251, 255, .58); transition: transform .2s ease; }
-.social-link:hover .social-link__arrow { transform: translate(2px, -2px); }
 @media (max-width: 370px) {
   .profile__body { padding-right: 14px; padding-left: 14px; }
   .intro-copy { font-size: 12.8px; letter-spacing: -.014em; }
@@ -235,7 +233,7 @@ h2 {
   .profile__body { padding-left: 38px; padding-right: 38px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .social-link, .social-link__arrow { transition: none; }
+  .social-link { transition: none; }
 }
 
 </style>
@@ -305,7 +303,6 @@ h2 {
                   <path d="M11.6 9.9 19.2 14l-7.6 4.1V9.9Z" fill="#fff"/>
                 </svg>
               </span><span class="social-link__name">YouTube</span>
-              <svg class="social-link__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
             <a class="social-link social-link--instagram" href="https://www.instagram.com/po.li_li/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Полины, откроется в новой вкладке">
               <span class="social-link__icon" aria-hidden="true">
@@ -317,16 +314,14 @@ h2 {
                   <circle cx="20.5" cy="7.8" r="1.35" fill="white"/>
                 </svg>
               </span><span class="social-link__name">Instagram</span>
-              <svg class="social-link__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a class="social-link social-link--telegram" href="https://t.me/poli_lima" target="_blank" rel="noopener noreferrer" aria-label="Telegram Полины, откроется в новой вкладке">
+            <a class="social-link social-link--telegram" href="https://t.me/poli_lima" target="_blank" rel="noopener noreferrer" aria-label="Telegram-канал Полины, откроется в новой вкладке">
               <span class="social-link__icon" aria-hidden="true">
                 <svg viewBox="0 0 28 28" fill="none">
                   <rect x="1.5" y="1.5" width="25" height="25" rx="7.5" fill="#36AEEA"/>
                   <path d="M8.2 13.6 19.7 9.15c.53-.19.98.13.82.86l-1.97 9.18c-.14.64-.52.78-1.07.49l-3.05-2.26-1.48 1.43c-.16.15-.3.29-.6.29l.23-3.18 5.8-5.24c.24-.22-.06-.34-.39-.12l-7.17 4.51-3.08-.96c-.67-.21-.68-.67.14-1Z" fill="white"/>
                 </svg>
-              </span><span class="social-link__name">Telegram</span>
-              <svg class="social-link__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span><span class="social-link__name">Telegram-канал</span>
             </a>
           </nav>
         </section>
