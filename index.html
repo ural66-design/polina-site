@@ -175,6 +175,8 @@ h2 {
 }
 .social__links { display: grid; grid-template-columns: minmax(0,1fr); gap: clamp(8px, 1.3vh, 11px); margin-top: clamp(12px, 2.1vh, 21px); }
 .social-link {
+  --button-pressed: rgba(255, 255, 255, .14);
+  -webkit-tap-highlight-color: transparent;
   position: relative;
   display: flex;
   align-items: center;
@@ -192,10 +194,11 @@ h2 {
   font-weight: 600;
   letter-spacing: -.01em;
   text-decoration: none;
-  transition: background .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
 }
-.social-link:hover { background: rgba(255,255,255,.12); border-color: rgba(255, 255, 255, .42); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(20, 31, 40, .12); }
-.social-link:active { transform: scale(.992); }
+.social-link.is-mouse-hovered { background: rgba(255,255,255,.12); border-color: rgba(255, 255, 255, .42); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(20, 31, 40, .12); }
+.social-link:active { background-color: var(--button-pressed); transform: scale(.98); transition-duration: 0s; }
+.social-link:focus:not(:focus-visible) { outline: none; }
 .social-link:focus-visible { outline: 2px solid #edf4fb; outline-offset: 3px; }
 .social-link__icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex: 0 0 28px; }
 .social-link__icon svg { display: block; width: 100%; height: 100%; }
@@ -328,5 +331,28 @@ h2 {
       </div>
     </main>
   </div>
+<script>
+  for (const link of document.querySelectorAll('.social-link')) {
+    const clearHover = () => link.classList.remove('is-mouse-hovered');
+    link.addEventListener('pointermove', event => {
+      if (event.pointerType === 'mouse' && event.buttons === 0) {
+        link.classList.add('is-mouse-hovered');
+      }
+    });
+    link.addEventListener('pointerleave', clearHover);
+    link.addEventListener('pointerdown', clearHover);
+    link.addEventListener('click', event => {
+      clearHover();
+      if (event.detail > 0) {
+        link.blur();
+      } else if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        link.animate([
+          { transform: 'scale(.98)', backgroundColor: 'var(--button-pressed)' },
+          { transform: 'none', backgroundColor: 'var(--button)' }
+        ], { duration: 150, easing: 'ease-out' });
+      }
+    });
+  }
+</script>
 </body>
 </html>
